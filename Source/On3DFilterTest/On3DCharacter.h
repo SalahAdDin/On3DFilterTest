@@ -11,19 +11,32 @@ class ON3DFILTERTEST_API AOn3DCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	class USpringArmComponent* CameraBoom;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+		class UCameraComponent* ThirdPersonCamera;
+
+
 public:
 	// Sets default values for this character's properties
 	AOn3DCharacter();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+		float BaseLookUpRate;
+
+protected:
+
+	void MoveForward(float Value);
+
+	void MoveRight(float Value);
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+public:
+
+	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+	FORCEINLINE class UCameraComponent* GetThirdPersonCamera() const { return ThirdPersonCamera; }
 };

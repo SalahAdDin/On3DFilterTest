@@ -5,9 +5,9 @@
 
 ATestGameModeBase::ATestGameModeBase()
 {
-	/*static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game"));
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/Player/On3DCharacter"));
 	if (PlayerPawnBPClass.Class != NULL)
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
-	}*/
+	}
 }
