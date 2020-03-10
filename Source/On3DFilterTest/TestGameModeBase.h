@@ -6,12 +6,11 @@
 #include "GameFramework/GameModeBase.h"
 #include "TestGameModeBase.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class ON3DFILTERTEST_API ATestGameModeBase : public AGameModeBase
+UCLASS(minimalapi)
+class ATestGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	ATestGameModeBase();
 };
