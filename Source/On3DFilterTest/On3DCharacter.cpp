@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "On3DCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -18,7 +17,7 @@ AOn3DCharacter::AOn3DCharacter()
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
 
-	GetCharacterMovement()->bOrientRotationToMovement = true;	
+	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f);
 	GetCharacterMovement()->AirControl = 0.2f;
 
@@ -57,7 +56,7 @@ void AOn3DCharacter::MoveRight(float Value)
 }
 
 // Called to bind functionality to input
-void AOn3DCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AOn3DCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 {
 	// Super::SetupPlayerInputComponent(PlayerInputComponent);
 	check(PlayerInputComponent);
@@ -65,5 +64,5 @@ void AOn3DCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	PlayerInputComponent->BindAxis("MoveRight", this, &AOn3DCharacter::MoveRight);
 
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 }
-
