@@ -7,6 +7,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "On3DCharacter_Animation.h"
 
 // Sets default values
 AOn3DCharacter::AOn3DCharacter()
@@ -55,6 +56,25 @@ void AOn3DCharacter::MoveRight(float Value)
 	}
 }
 
+void AOn3DCharacter::Attack()
+{
+	UOn3DCharacter_Animation *AnimInstanceRef = Cast<UOn3DCharacter_Animation>(GetMesh()->GetAnimInstance());
+	if (AnimInstanceRef)
+		AnimInstanceRef->Attack();
+}
+
+bool AOn3DCharacter::IsDead()
+{
+	return Health <= 0;
+}
+
+void AOn3DCharacter::CalculateDamage(int Damage)
+{
+	Health = Health - Damage;
+	if (IsDead())
+		GetController()->UnPossess();
+}
+
 // Called to bind functionality to input
 void AOn3DCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 {
@@ -65,4 +85,6 @@ void AOn3DCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputCompo
 
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+
+	PlayerInputComponent->BindAction("Knock", IE_Pressed, this, &AOn3DCharacter::Attack);
 }
