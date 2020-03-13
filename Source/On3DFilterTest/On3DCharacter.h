@@ -32,6 +32,7 @@ protected:
 
 	void MoveRight(float Value);
 
+	UFUNCTION(BlueprintCallable, Category = Behaviour)
 	void Attack();
 
 	UFUNCTION(BlueprintCallable, Category = Behaviour)
