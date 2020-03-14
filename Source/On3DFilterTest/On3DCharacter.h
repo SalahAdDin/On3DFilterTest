@@ -32,6 +32,14 @@ protected:
 
 	void MoveRight(float Value);
 
+	UFUNCTION(BlueprintCallable, Category = Behaviour)
+	void Attack();
+
+	UFUNCTION(BlueprintCallable, Category = Behaviour)
+	bool IsDead();
+
+	void CalculateDamage(int Damage);
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -39,4 +47,7 @@ public:
 
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	FORCEINLINE class UCameraComponent* GetThirdPersonCamera() const { return ThirdPersonCamera; }
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Setup)
+		int Health;
 };
