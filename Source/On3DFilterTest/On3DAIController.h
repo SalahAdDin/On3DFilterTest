@@ -17,23 +17,24 @@ class ON3DFILTERTEST_API AOn3DAIController : public AAIController
 
 public:
 
+	AOn3DAIController();
+	
 	void BeginPlay() override;
 
 	UFUNCTION(BlueprintCallable, Category = "Blackboard")
 	void UpdateBlackboardEnemyKey(AActor* Actor, FAIStimulus Stimulus);
 
 protected:
-
-	UPROPERTY(EditDefaultsOnly, Category = "AI")
-	UAIPerceptionComponent* AIPerception;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Blackboard")
-	UBlackboardComponent* BlackboardComponent;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Blackboard")
 	UBlackboardData* BlackboardDataToUse;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Blackboard")
 	UBehaviorTree* BehaviorTreeToUse;
+
+private:
+
+	UPROPERTY(VisibleDefaultsOnly, Category = AI)
+	UAIPerceptionComponent* AIPerception;
 	
 };
