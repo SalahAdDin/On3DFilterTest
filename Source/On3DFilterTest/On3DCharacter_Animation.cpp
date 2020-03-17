@@ -21,6 +21,23 @@ void UOn3DCharacter_Animation::Attack(){
 	}
 }
 
+void UOn3DCharacter_Animation::ReceiveAttack(){
+	if (MeleeReceiveMontage){
+		FName CurrentSection = Montage_GetCurrentSection(MeleeReceiveMontage);
+		if (CurrentSection.IsNone())
+		{
+			Montage_Play(MeleeReceiveMontage);
+		}
+		else if (bReceiveFirstPunch)
+		{
+			Montage_JumpToSection(FName("Right"), MeleeReceiveMontage);
+		} 
+		else if (bReceiveSecondPunch) {
+			Montage_JumpToSection(FName("Left"), MeleeReceiveMontage);
+		}
+	}
+}
+
 void UOn3DCharacter_Animation::BindToMove(APawn* Pawn)
 {
 	const FVector Velocity = Pawn->GetVelocity();

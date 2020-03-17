@@ -20,6 +20,13 @@ class ON3DFILTERTEST_API AOn3DCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AOn3DCharacter();
+	virtual float TakeDamage
+(
+    float DamageAmount,
+    struct FDamageEvent const & DamageEvent,
+    class AController * EventInstigator,
+    AActor * DamageCauser
+) override;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	float BaseLookUpRate;
@@ -36,7 +43,7 @@ protected:
 	bool IsDead();
 
 	UFUNCTION(BlueprintCallable, Category = Behaviour)
-	void CalculateDamage(int Damage);
+	void CalculateDamage(int DamageAmount);
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;

@@ -63,16 +63,30 @@ void AOn3DCharacter::Attack()
 		AnimInstanceRef->Attack();
 }
 
+float AOn3DCharacter::TakeDamage(
+    float DamageAmount,
+    struct FDamageEvent const & DamageEvent,
+    class AController * EventInstigator,
+    AActor * DamageCauser
+){
+	Super::TakeDamage(DamageAmount,DamageEvent,EventInstigator,DamageCauser);
+	UOn3DCharacter_Animation *AnimInstanceRef = Cast<UOn3DCharacter_Animation>(GetMesh()->GetAnimInstance());
+	if (AnimInstanceRef)
+		AnimInstanceRef->ReceiveAttack();
+	CalculateDamage((int)DamageAmount);
+	return DamageAmount;
+}
+
 bool AOn3DCharacter::IsDead()
 {
 	return Health <= 0;
 }
 
-void AOn3DCharacter::CalculateDamage(int Damage)
+void AOn3DCharacter::CalculateDamage(int DamageAmount)
 {
-	Health = Health - Damage;
-	if (IsDead())
-		GetController()->UnPossess();
+	Health -= DamageAmount;
+	// if (IsDead())
+	// 	GetController()->UnPossess();
 }
 
 // Called to bind functionality to input
