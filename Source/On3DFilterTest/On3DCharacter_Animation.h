@@ -45,4 +45,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Locomotion")
 	void BindToMove(APawn* Pawn);
+
+	UFUNCTION(BlueprintCallable, Category = Behaviour)
+	void MakeDamage(ACharacter* Actor, FName SocketName);
 };
