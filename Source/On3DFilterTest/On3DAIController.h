@@ -24,6 +24,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Blackboard")
 	void UpdateBlackboardEnemyKey(AActor* Actor, FAIStimulus Stimulus);
 
+	UFUNCTION(BlueprintCallable, Category = "Blackboard")
+	void UpdateBlackboardLastSeenLocation(AActor* Actor, FAIStimulus Stimulus);
+
+	UFUNCTION(BlueprintCallable, Category = "Blackboard")
+	void CompleteSenses(AActor* Actor, TArray<FAIStimulus> StimulusArray);
+
 protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Blackboard")
