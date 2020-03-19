@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "UObject/NameTypes.h"
 #include "TestGameModeBase.generated.h"
 
 UCLASS(minimalapi)
@@ -15,6 +16,9 @@ public:
 	ATestGameModeBase();
 
 	void OnCharacterDead(AActor* Actor);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = Gameplay)
+	void GameOver(FName TextToMessage);
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Players)
