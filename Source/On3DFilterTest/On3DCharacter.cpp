@@ -7,7 +7,9 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "On3DCharacter_Animation.h"
+#include "TestGameModeBase.h"
 
 // Sets default values
 AOn3DCharacter::AOn3DCharacter()
@@ -85,8 +87,10 @@ bool AOn3DCharacter::IsDead()
 void AOn3DCharacter::CalculateDamage(int DamageAmount)
 {
 	Health -= DamageAmount;
-	// if (IsDead() && GetController())
-	// 	GetController()->UnPossess();
+	if (IsDead() && GetController()){
+		Cast<ATestGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()))->OnCharacterDead(this);
+		GetController()->UnPossess();
+	}
 }
 
 // Called to bind functionality to input

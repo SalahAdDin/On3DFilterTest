@@ -14,6 +14,9 @@ class ATestGameModeBase : public AGameModeBase
 public:
 	ATestGameModeBase();
 
+	void OnCharacterDead(AActor* Actor);
+
+protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Players)
 	TArray<AActor *> EnemyArray;
 };
