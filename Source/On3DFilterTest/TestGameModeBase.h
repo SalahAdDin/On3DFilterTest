@@ -13,4 +13,7 @@ class ATestGameModeBase : public AGameModeBase
 
 public:
 	ATestGameModeBase();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Players)
+	TArray<AActor *> EnemyArray;
 };

@@ -85,8 +85,8 @@ bool AOn3DCharacter::IsDead()
 void AOn3DCharacter::CalculateDamage(int DamageAmount)
 {
 	Health -= DamageAmount;
-	if (IsDead() && GetController())
-		GetController()->UnPossess();
+	// if (IsDead() && GetController())
+	// 	GetController()->UnPossess();
 }
 
 // Called to bind functionality to input
