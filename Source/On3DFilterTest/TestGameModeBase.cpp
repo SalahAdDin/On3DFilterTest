@@ -11,3 +11,13 @@ ATestGameModeBase::ATestGameModeBase()
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
 }
+
+void ATestGameModeBase::OnCharacterDead(AActor* Actor){
+	UE_LOG(LogTemp, Warning, TEXT("Killed: %s"), *Actor->GetName());
+
+	bool bIsRemoved = EnemyArray.Remove(Actor);
+	bool bIsWin = EnemyArray.Num() <= 0 ? true : false;
+
+	if(bIsRemoved && bIsWin)
+	UE_LOG(LogTemp, Warning, TEXT("Winner!"), );
+}

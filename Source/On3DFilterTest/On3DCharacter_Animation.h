@@ -22,14 +22,14 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UAnimMontage *MeleeReceiveMontage;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite = States)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category  = States)
 	bool bAcceptsSecondAttackInput;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite = States)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category  = States)
 	bool bReceiveFirstPunch;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite = States)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category  = States)
 	bool bReceiveSecondPunch;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite = States)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category  = States)
 	bool bDead;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement)
