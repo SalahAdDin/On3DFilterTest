@@ -24,7 +24,7 @@ void ATestGameModeBase::OnCharacterDead(AActor* Actor){
 		GameOver(FName(TEXT("Winner!")));
 	UE_LOG(LogTemp, Warning, TEXT("Winner!"), )
 	}
-	else{
+	else if(!bIsRemoved){
 		GameOver(FName(TEXT("Loser!")));
 	UE_LOG(LogTemp, Warning, TEXT("Loser!"), );
 	}
